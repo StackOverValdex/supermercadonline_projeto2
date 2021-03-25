@@ -11,8 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "VENDAS")
-public class VENDAS implements Serializable
-{
+public class VENDAS implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

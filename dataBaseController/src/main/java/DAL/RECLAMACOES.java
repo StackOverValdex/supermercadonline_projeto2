@@ -7,12 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Data
 @Entity
 @Table(name = "RECLAMACOES")
-public class RECLAMACOES implements Serializable
-{
+public class RECLAMACOES implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,5 +34,8 @@ public class RECLAMACOES implements Serializable
 
     @Column(name = "ID_FUNCIONARIO", nullable = false)
     private String idFuncionario;
+
+    @Column(name = "DATARECLAMACAO", nullable = false)
+    private Date DATARECLAMACAO;
 
 }

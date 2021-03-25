@@ -11,8 +11,7 @@ import java.sql.Date;
 @Data
 @Entity
 @Table(name = "FERIAS")
-public class FERIAS implements Serializable
-{
+public class FERIAS implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

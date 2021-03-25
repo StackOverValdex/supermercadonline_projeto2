@@ -11,8 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "METODOPAGAMENTO")
-public class METODOPAGAMENTO implements Serializable
-{
+public class METODOPAGAMENTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,5 +21,8 @@ public class METODOPAGAMENTO implements Serializable
 
     @Column(name = "DESCRICAO", nullable = false)
     private String DESCRICAO;
+
+    @Column(name = "ESTADOATIVIDADE")
+    private String ESTADOATIVIDADE;
 
 }

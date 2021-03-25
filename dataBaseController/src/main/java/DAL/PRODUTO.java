@@ -11,8 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "PRODUTO")
-public class PRODUTO implements Serializable
-{
+public class PRODUTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,5 +39,11 @@ public class PRODUTO implements Serializable
 
     @Column(name = "QUANTIDADE_MINIMA_STOCK", nullable = false)
     private String quantidadeMinimaStock;
+
+    @Column(name = "ESTADOATIVIDADE", nullable = false)
+    private String ESTADOATIVIDADE;
+
+    @Column(name = "ID_UNIDADEMEDIDA", nullable = false)
+    private String idUnidademedida;
 
 }

@@ -4,7 +4,6 @@ import DAL.FORNECEDOR;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface FORNECEDORRepository extends JpaRepository<FORNECEDOR, String>, JpaSpecificationExecutor<FORNECEDOR>
-{
+public interface FORNECEDORRepository extends JpaRepository<FORNECEDOR, String>, JpaSpecificationExecutor<FORNECEDOR> {
 
 }

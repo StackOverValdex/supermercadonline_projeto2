@@ -11,8 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "ARMAZEM")
-public class ARMAZEM implements Serializable
-{
+public class ARMAZEM implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,5 +39,8 @@ public class ARMAZEM implements Serializable
 
     @Column(name = "TELEFONE_RESPONSAVEL")
     private String telefoneResponsavel;
+
+    @Column(name = "ESTADOATIVIDADE")
+    private String ESTADOATIVIDADE;
 
 }

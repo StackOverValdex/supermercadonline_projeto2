@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoGeneratorSettingsState">
+    <option name="ignoredFields">
+      <set>
+        <option value="" />
+      </set>
+    </option>
+    <option name="moduleName" value="dataBaseController" />
+    <option name="moduleNameToSettings">
+      <map>
+        <entry key="dataBaseController">
+          <value>
+            <ModuleSettings>
+              <option name="entityPackageName" value="DAL" />
+              <option name="entityParentDirectory" value="$PROJECT_DIR$/dataBaseController/src/main/java" />
+              <option name="repositoryPackageName" value="repository" />
+              <option name="repositoryParentDirectory" value="$PROJECT_DIR$/dataBaseController/src/main/java" />
+            </ModuleSettings>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
