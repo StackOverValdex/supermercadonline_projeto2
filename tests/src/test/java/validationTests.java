@@ -15,8 +15,8 @@ public class validationTests
 {
     @Test
     /**
-     * @param nameParamName: all variables that have the regex code
-     * @param testParamName: all test Variables
+     * @param nameFormat: all variables that have the regex code
+     * @param testFormatName: all test Variables
      */
     void tabela_EstadoDeEncomenda()
     {
@@ -36,7 +36,7 @@ public class validationTests
         String testQuantity="4566666";
 
         Assertions.assertAll(()-> Assertions.assertEquals(true,testQuantity.matches(quantiyFormat),"Por favor, insira somente numeros inteiros"),
-                ()-> Assertions.assertEquals(true,testDate.matches(dateFormat),"Por favor, insira dados no formatoo dd-mm-yyyy"));
+                ()-> Assertions.assertEquals(true,testDate.matches(dateFormat),"Por favor, insira dados no formato dd-mm-yyyy"));
 
     }
 

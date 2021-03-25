@@ -29,7 +29,7 @@ public class oracleDB_connection
             try
             {
                 conn = DriverManager.getConnection(
-                        "jdbc:oracle:thin:@localhost:1521:XE", "marketWorld_projecto2 ", "marketWorld_projecto2 ");
+                        "jdbc:oracle:thin:@localhost:1521:XE", "marketWorld_projecto2", "marketWorld_projecto2 ");
             } catch (Exception e)
             {
                 System.out.println("Error: " + e.getMessage());
