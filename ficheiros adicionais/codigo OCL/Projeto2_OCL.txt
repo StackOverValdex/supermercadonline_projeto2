@@ -1,0 +1,301 @@
+package com.company										/****** CLASSE OCL	******/
+
+	Context UnidadeDeMedida
+		inv nomeUnidadeMedida: nomeUnidadeMedida->!isNull()
+		inv descricaoUnidadeMedida: nomeUnidadeMedida->!isNull()
+		
+	Context UnidadeDeMedida::adicionarUnidadeMedida(nomeUnidadeMedida:String,descricaoUnidadeMedida:String)	//FUNÇÃO PARA ADICIONAR UMA UNIDADE DE MEDIDA
+		pos: nomeUnidadeMedida->exists(self.UnidadeDeMedida->collection(nomeUnidadeMedida)|false)		//a unidade inserida nao pode já existir na coleção das unidades de medida
+
+	Context UnidadeDeMedida::editarUnidadeMedida(nomeUnidadeMedida:String,descricaoUnidadeMedida:String)	//FUNÇÃO PARA EDITAR UMA UNIDADE DE MEDIDA
+		pre: nomeUnidadeMedida->exists(self.UnidadeDeMedida->collection(nomeUnidadeMedida)|true) AND			
+			 descricaoUnidadeMedida !=  self.descricaoUnidadeMedida  OR  nomeUnidadeMedida != self.nomeUnidadeMedida	//verifica se unidade de medida existe e so então
+																																//modifica os atributos desejadoas
+																																
+	Context UnidadeDeMedida::eliminarUnidadeMedida(nomeUnidadeMedida:String)							//FUNÇÃO PARA REMOVER UMA UNIDADE DE MEDIDA
+		pre: nomeUnidadeMedida->exists(self.UnidadeDeMedida->collection(nomeUnidadeMedida)|true)		//verifica se a unidade existe na coleção das unidades
+
+	Context UnidadeDeMedida::alterarEstado_Unidade(nomeUnidadeMedida:String,estadoAtividade: boolean)	//FUNÇÃO PARA ALTERAR O ESTADO DE UMA UNIDADE DE MEDIDA
+		pre: nomeUnidadeMedida->exists(self.UnidadeDeMedida->collection(UnidadeMedida)|true)			//verifica se a unidade existe na coleção das unidades		
+		pos: estadoAtividade!=  self.estadoAtividade													//verifica se o estado foi realmente alterado
+		
+endpackage
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+
+	Context Prateleira
+		inv id_prateleira: id_prateleira>0
+		inv corredor: corredor>0
+		
+	Context Prateleira::adicionarPrateleira(id_prateleira:int,corredor:int)
+		pos: id_prateleira->exists(self.Prateleira->collection(id_prateleira)|false)		//a prateleira inserida nao pode já existir na coleção das prateleira
+
+	Context Prateleira::editarUnidadeMedida(id_prateleira:int,corredor:int)	//FUNÇÃO PARA EDITAR UMA PRATELEIRA
+		pre: id_prateleira->exists(self.Prateleira->collection(id_prateleira)|true) AND			
+			 corredor !=  self.descricaoUnidadeMedida  OR  nomeUnidadeMedida != @pre self.nomeUnidadeMedida	//verifica se a prateleira existe e so então
+																											//modifica os atributos desejadoas
+																																
+	Context Prateleira::eliminarPrateleira(id_prateleira:int)							//FUNÇÃO PARA REMOVER UMA PRATELEIRA
+		pre: id_prateleira->exists(self.Prateleira->collection(id_prateleira)|true)		//verifica se a prateleira existe na coleção das prateleira
+																																																										
+endpackage
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+
+	Context Produto: 
+		inv nomeProduto: nomeProduto->!isNull()
+		inv quantidadeEmStock: quantidadeEmStock >0
+		inv validade: validade->!isNull()
+		inv precoVenda: precoVenda->!isNull()
+		inv estadoAtividade: !isNull()
+	
+	Context Produto::adicionarProduto(nomeProduto:String,quantidadeEmStock int,validade:Date,precoVenda:int) //FUNÇÃO PARA ADICIONAR UM PRODUTO
+				
+	Context Produto::coleçãorProduto(nomeProduto:String)
+		pre: nomeProduto->exists(self.Produto->collection(nomeProduto)|true) 	//verifica que o produto da coleção existe 
+		
+	
+	Context Produto::editarProduto(nomeProduto:String,quantidadeEmStock int,validade:Date,precoVenda:int)
+		pre: nomeProduto->exists(self.Produto->collection(nomeProduto)|true)	//verifica que o produto a coleção existe!
+		pos: nomeProduto != self.nomeProduto OR quantidadeEmStock != self.quantidadeEmStock OR validade != self.validade OR precoVenda != self.precoVenda
+
+	Context Produto::apagarProduto(nomeProduto:String)	
+		pre: nomeProduto->exists(self.Produto->collection(nomeProduto)|true)	//verifica que o produto da coleção existe!
+		
+	Context Produto::alterarEstadoProduto(nomeProduto:String,estadoAtividade: boolean)
+		pre: nomeProduto->exists(self.Produto->collection(nomeProduto)|true)	//verifica que o produto da coleção existe!
+		pos: estadoAtividade != self.estadoAtividade
+  
+endpackage
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+	
+	Context Armazem:			
+		inv nomeArmazem: nomeArmazem->!isNull()
+		inv morada: morada->!isNull()
+		
+	Context Armazem::verArmazem(nomeArmazem: String,morada:String)			//FUNÇÃO PARA VER UM ARMAZEM ESPECIFICO
+		pre: nomeArmazem->exists(self.Armazem->collection(nomeArmazem)|true)	//verifica que o armazem da coleção existe 
+		
+	Context Armazem::eliminarArmazem(nomeArmazem:String,morada:String)		//FUNÇÃO PARA ELIMINAR UM ARMAZEM
+			pre: nomeArmazem->exists(self.Armazem->collection(nomeArmazem)|true)	//verifica que o armazem da coleção existe 
+			
+	Context Armazem::adicionarArmazem(nomeArmazem: String,morada:String)	//FUNÇÃO PARA ADICIONAR UM ARMAZEM
+		   		pre: nomeArmazem->exists(self.Armazem->collection(nomeArmazem)|false)	//verifica que o armazem da coleção nao existe 
+
+		
+	Context Armazem::verResponsavel(nomeArmazem:String,morada:String)		//FUNÇÃO PARA VER O RESPONSAVEL POR UM CERTO ARMAZEM
+			pre: nomeArmazem->exists(self.Armazem->collection(nomeArmazem)|true)	//verifica que o armazem da coleção existe 
+
+	Context Armazem::editarArmazem(nomeArmazem:String,morada:String)		//FUNÇÃO QUE PERMITE EDITAR UM CERTO ARMAZEM
+			pre: nomeArmazem->exists(self.Armazem->collection(nomeArmazem)|true)	//verifica que o armazem da coleção existe 
+			pos: nomeArmazem != self.nomeArmazem != morada != self.morada
+			
+	Context Armazem::alterarEstadoArmazem(nomeArmazem: String, estadoAtividade:String)	//FUNÇÃO PARA ALTERAR O ESTADO UM CERTO ARMAZEM
+			pre: nomeArmazem->exists(self.Armazem->collection(nomeArmazem)|true)		//verifica que o armazem da coleção existe 
+			pos: estadoAtividade != self.estadoAtividade
+			
+endpackage
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+
+	Context Funcionarios:
+		inv id_funcionario: id_funcionario>0
+		inv morada: morada->!isNull()
+		inv horario: horario >0
+		inv estadoAtividade: estadoAtividade->!isNull() 
+		
+	Context Funcionarios::adicionarFuncionario(id_funcionario:int,morada:String,horario:int)	//ADICIONAR FUNCIONARIOS
+			pre: id_funcionario->exists(self.Funcionarios->collection(id_funcionario)|false)	//verifica que o funcionario a adicionar nao existe na coleção 
+			
+	Context Funcionarios::removerFuncionario(id_funcionario:int)	//REMOVER FUNCIONARIOS
+			pre: id_funcionario->exists(self.Funcionarios->collection(id_funcionario)|true)	//verifica que o funcionario a adicionar existe na coleção 
+
+	Context Funcionarios::verFuncionario(id_funcionario:int)	//VER FUNCIONARIOS
+			pre: id_funcionario->exists(self.Funcionarios->collection(id_funcionario)|true)	//verifica que o funcionario a ver existe na coleção 
+	
+	Context Funcionarios::editarFuncionario(id_funcionario:int)	//EDITAR FUNCIONARIOS
+			pre: id_funcionario->exists(self.Funcionarios->collection(id_funcionario)|true)	//verifica que o funcionario a editar existe na coleção 
+			
+	Context Funcionarios::atribuirHorario(id_funcionario:int,horario:int)	//ATRIBUIR HORARIO AO FUNCIONARIO
+		pre	(horario->exists(self.Horario->collection(id_horario)|true) && self.Horario.numeroFuncionariosNecessario < *n* )	//verifica que o funcionario a editar existe na coleção 
+			
+	Context Funcionarios::verHorario(id_funcionario:int, horario:int) // VER HORARIOS DE FUNCIONARIOS
+			pre: id_funcionario->exists(self.Funcionarios->collection(id_funcionario)|true)	//verifica que o funcionario a adicionar existe na coleção 
+			pos: horario->exists(self.Horario->collection(id_horario))						//verifica se o horario existe na tabela dos horarios
+			
+	Context Funcionarios::alterarEstadoFuncionario(id_funcionario:int,estadoAtividade:boolean)	//ALTERAR ESTADO DE FUNCIONARIOS
+			pre: id_funcionario->exists(self.Funcionarios->collection(id_funcionario)|true)	//verifica que o funcionario a adicionar existe na coleção 
+			pos estadoAtividade != self.estadoAtividade
+
+endpackage
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+
+	Context Horario
+		inv id_horario: id_horario>0
+		inv diasDeSemana: diasDeSemana->!isNull()
+		inv numeroFuncionarios: numeroFuncionarios > 0
+		inv numeroFuncionariosNecessario: numeroFuncionariosNecessario > 0
+	
+	Context Horario::verHorarios()	//FUNÇÃO PARA VER HORARIOS
+	
+	Context Horario::editarHorarios(id_horario)	//FUNÇÃO PARA EDITAR HORARIOS
+		pre: id_horario->exists(self.Horario->collection(id_horario)|true)	//verifica que o horario a editar existe na coleção 
+		pos: numeroFuncionarios != self.numeroFuncionarios || diasDeSemana != self.diasDeSemana
+		
+	Context Horario::adicionarHorarios(diasDeSemana:String,numeroFuncionariosMax:int)	//FUNÇÃO PARA ADICIONAR HORARIO
+	
+	Context Horario::eliminarHorario(id_horario:int)									//FUNÇÃO PARA ADICIONAR HORARIO
+				pre: id_horario->exists(self.Horario->collection(id_horario)|true)	//verifica que o horario a eliminar existe na coleção 
+
+		
+	Context Horario::alterarEstadoHorario(id_horario:int,estadoAtividade:boolean)
+				pre: id_horario->exists(self.Horario->collection(id_horario)|true)	//verifica que o horario  existe na coleção 
+				pos: estadoAtividade != self.estadoAtividade
+		
+endpackage
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+	
+	Context Ferias
+		inv id_ferias: id_ferias>0
+		inv id_funcionario: id_funcionario>0
+		
+	Context Ferias::verFerias(id_ferias:int,id_funcionario:int)	//FUNÇÃO QUE LISTA TODAS AS FERIAS
+	
+	Context Ferias:darFerias(id_ferias:int,id_funcionario:int)	//FUNÇÃO QUE ATRIBUI FERIAS A UM CERTO FUNCIONARIO 
+		pre: id_funcionario->exists(self.Funcionarios->collection(id_funcionario)|true)	//verifica a existencia do funcionario a atribuir ferias
+		
+	Context Ferias::editarFerias(id_ferias)						//FUNÇÃO QUE PERMITE EDITAR FERIAS
+		
+endpackage
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+
+	Context Departamento		
+		inv nomeDepartamento: nomeDepartamento->!isNull()
+		inv estadoAtividade: estadoAtividade->!isNull()
+		
+	Context Departamento::adicionarDepartamento(nomeDepartamento:String)	//FUNÇÃO QUE ADICIONA UM DEPARTAMENTO
+		pre: nomeDepartamento->exists(self.Departamento->collection(nomeDepartamento)|false)	//o departamento a inserir nao deve existir
+		
+	Context Departamento::editarDepartamento(nomeDepartamento:String)		//FUNÇÃO QUE PERMITE EDITAR UM DEPARTAMENTO JA EXISTENTE
+		pre: nomeDepartamento->exists(self.Departamento->collection(nomeDepartamento)|true)	//o departamento a editar  deve existir
+		
+	Context Departamento::alterarEstadoDepartamento(nomeDepartamento:String, estadoAtividade:boolean)	//FUNÇAO QUE PERMITE A ALTERAÇÃO DO ESTADO DE ATIVIDADE DE UM DEPARTAMENTO
+		pre: nomeDepartamento->exists(self.Departamento->collection(nomeDepartamento)|true)	//o departamento a editar  deve existir
+		pos: estadoAtividade!= self.estadoAtividade
+
+endpackage
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+	Context Gestores
+		inv id_gestor: id_gestor>0
+		inv id_horario: id_horario>0
+		inv nomeGestor: nomeGestor->!isNull()
+		inv morada: morada->!isNull()
+		inv estadoAtividade: estadoAtividade->!isNull()
+
+
+	Context Gestores::adicionarGestor(nomeGestor:String,morada:String)	//FUNÇAO PARA ADICIONAR GESTOR
+	
+	Context Gestores::removerGestor(id_gestor:int)						//REMOVER GESTOR
+		pre: id_gestor->exists(self.Gestores->collection(id_gestor)|true)	
+		
+	Context Gestores::verGestores(nomeGestor:String)					//VER GESTOR
+		pre: id_gestor->exists(self.Gestores->collection(id_gestor)|true)	
+		
+	Context Gestores::editarGestor(id_gestor:int,nomeGestor:String,morada:String,id_horario:int)	//EDITAR GESTOR
+		pre: id_gestor->exists(self.Gestores->collection(id_gestor)|true)	
+		pos nomeGestor != self.nomeGestor OR morada != self.morada OR id_horario != self.id_horario
+		
+	Context Gestores::verHorario(id_horario:int)		//VER HORARIOS DOS GESTORES
+		pre: id_horario->exists(self.Horario->collection(id_horario))						//verifica se o horario existe na tabela dos horarios
+
+	Context Gestores::alterarEstadoGestor(id_gestor:int,estadoAtividade:boolean)		//ALTERAR ESTADO DO GESTOR			
+		pre: id_gestor->exists(self.Gestores->collection(id_gestor)|true)	
+		pos: estadoAtividade != self.estadoAtividade
+		
+		
+endpackage
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+
+	Context Fornecedores:
+		inv id_fornecedor: id_fornecedor>0
+		inv nomeFornecedor: nomeFornecedor->!isNull()
+		inv morada: morada->!isNull()
+		inv estadoAtividade: estadoAtividade->!isNull()
+		
+	Context Fornecedores::adicionarFornecedores(nomeFornecedor:String,morada:String)
+		pre: nomeFornecedor->exists(self.Fornecedores->collection(nomeFornecedor)|false)		//NAO PODEMOS TER DOIS FORNECEDORES COM NOMES IGUAIS
+		
+	Context Fornecedores:removerFornecedores(nomeFornecedor:String)
+		pre: nomeFornecedor->exists(self.Fornecedores->collection(nomeFornecedor)|true)	
+		
+	Context Fornecedores::verFornecedor(nomeFornecedor:String)
+		pre: nomeFornecedor->exists(self.Fornecedores->collection(nomeFornecedor)|true)	
+		
+	Context Fornecedores::eliminarFornecedor(nomeFornecedor:String)
+		pre: nomeFornecedor->exists(self.Fornecedores->collection(nomeFornecedor)|true)	
+		
+	Context Fornecedores::alterarEstadoFornecedor(nomeFornecedor:String,estadoAtividade:boolean)
+		pre: id_fornecedor->exists(self.Fornecedores->collection(nomeFornecedor)|true)	
+		pos: estadoAtividade != self.estadoAtividade
+	
+endpackage
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+	Context Encomendas_ao_fornecedores
+		inv id_gestor:id_gestor>0
+		inv id_encomenda: id_encomenda>0
+		
+	Context Encomendas_ao_fornecedores::fazerEncomendas(id_gestor:int)			//FUNÇAO PARA FAZER AS ENCOMENDAS
+		pre: id_gestor->exists(self.Gestores->collection(id_gestor)|true) 
+		
+	Context Encomendas_ao_fornecedores::cancelarEncomendas(id_encomenda:int)	//FUNÇAO PARA CANCELAR AS ENCOMENDAS	
+		pre:id_encomenda->exists(self.Encomendas_ao_fornecedores->collection(id_encomenda)|true)
+		
+	Context: Encomendas_ao_fornecedores::verEncomenda(id_encomenda:int)			//VER ENCOMENDAS
+		pre:id_encomenda->exists(self.Encomendas_ao_fornecedores->collection(id_encomenda)|true)
+
+endpackage
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package com.company
+	Context Login
+		inv username: username->!isNull()
+		inv password: password->!isNull()
+		inv estadoAtividade: estadoAtividade->!isNull()
+		
+	Context Login::disableLoginAccount(username:String,password:String,estadoAtividade:boolean)		//FUNÇAO QUE PERMITE DESATIVAR UMA CONTA
+		pre: (username AND password)->exists(self.Login->collection(password,username)|true)
+		pos: estadoAtividade != self.estadoAtividade
+		
+		
+	Context Login::eliminateLoginAccount(username:String,password:String)
+		pre: (username AND password)->exists(self.Login->collection(password,username)|true)		//FUNÇAO QUE PERMITE ELIMINAR UMA CONTA
+endpackage
