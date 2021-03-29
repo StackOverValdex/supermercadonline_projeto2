@@ -47,7 +47,9 @@ DIFICIL
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-															MODEO CONCEITUAL
+								      *****************MODELO CONCEITUAL*************
+												
+															AÇÕES
 													
 GESTORES
 podem fazer tudo
@@ -67,3 +69,32 @@ FUNCIONARIOS
 
 
 															
+															CAMPO LEXICAL
+															
+abrir x- para abrir qualquer coisar
+voltar - para retornar
+sair- sair
+listar x-para ver qq coisar
+editar y-para editar coisaslogin->ecra principal->logistica|finanças|Recursos humanos
+login->ecra principal->side bar menu
+
+															METAFORAS
+
+
+															CONCEITOS
+dados:informações relativas ao conceito atual;
+grelhas:conjuntos de dados de dados organizados em linhas e colunas
+menu: onde temos as opções a aceder;
+
+															MAPEAMENTO
+Logistica(produtos,armazens,prateleira,unidade de medida,fornecedores)
+Finanças(Vendas,Linhas Vendas,faturamento,pagamentos,metodo_pagamento,encomendas,linhas encomendas,estado encomenda)
+Recursos humanos(Login,clientes,funcionarios,gestores,codigo postal,ferias,horarios,reclamações,resolução_reclamações,departamento)
+												
+GESTORES
+login->ecra principal->logistica|finanças|Recursos humanos
+login->ecra principal->side bar menu
+
+FUNCIONARIOS
+login->ecra principal->logistica|finanças|Recursos humanos	//read only except where is necessary
+login->ecra principal->side bar menu
