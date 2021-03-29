@@ -1,0 +1,69 @@
+															11 PERGUNTAS
+														
+1-Quem vai utilizar o sistema ?
+->Funcionarios, Gestores e Administradores
+
+2-Que tarefas executam atualmente 
+->usam plataformas de comunicação como gmail e etc;
+->
+
+3-Que tarefas são desejáveis ?
+->gestor/funcionarios tomar possiveis notas de coisas;
+
+4-Como se aprendem as tarefas ?
+->clicar em ajuda ou ver o tutorial ou ler a documentação
+
+5-Onde são desempenhadas as tarefas ? 
+->casa ou escritorio
+
+6-Relações entre utilizadores e informação ? 
+->informações pessoais;
+
+8-Como comunicam os utilizadores entre si ?
+->nao comunicam,usam whatsapp
+
+9-Qual a frequência de desempenho das tarefas ?
+->È frequente(layout por prioridade);
+
+11-Que acontece se algo correr mal ?
+-> mostrar uma exception de como resolver a situação;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+															GRAU DE DIFICULDADES DAS TAREFAS
+														
+FACIL
+->login;
+->listar informações;
+
+MÉDIO
+->registar-se;
+->adiconar dados;
+->remover dados;
+->editar dados;
+
+DIFICIL
+->recuperar dados perdidos;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+															MODEO CONCEITUAL
+													
+GESTORES
+podem fazer tudo
+
+FUNCIONARIOS
+0-login
+1-reclamações(read only)
+2-horarios(read only)
+3-produtos(read only)
+4-resolução_reclamações(read and answer)
+5-clientes(read only)
+6-metodo_pagamento(read only)
+7-pagamentos(ver)
+8-encomendas(read only)
+9-categorias(read only)
+10-unidade de medida(read only)
+
+
+															
