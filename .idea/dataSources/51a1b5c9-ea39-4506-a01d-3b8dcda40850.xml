@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="@supermecado_online">
+<dataSource name="@localhost">
   <database-model serializer="dbm" dbms="ORACLE" family-id="ORACLE" format-version="4.20">
     <root id="1">
       <ServerVersion>18.0.0.0.0</ServerVersion>
@@ -61,9 +61,9 @@
     <schema id="20" parent="1" name="MARKETWORLD_PROJECTO2">
       <ObjectId>110</ObjectId>
       <CreatedTimestamp>2021-02-27.21:06:38</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-24.23:36:02</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-03-28.14:42:32</ModifiedTimestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
-      <IntrospectionTimestamp>2021-03-25.12:01:21</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-04-01.19:52:48</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="21" parent="1" name="MDDATA">
@@ -98,7 +98,7 @@
       <CreatedTimestamp>2019-02-04.04:45:23</CreatedTimestamp>
       <ModifiedTimestamp>2020-12-16.23:40:03</ModifiedTimestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
-      <IntrospectionTimestamp>2021-03-25.12:01:32</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-04-01.19:53:02</IntrospectionTimestamp>
       <DbLinksHash>207156648</DbLinksHash>
     </schema>
     <schema id="31" parent="1" name="REMOTE_SCHEDULER_AGENT">
@@ -298,13 +298,13 @@
     <table id="93" parent="20" name="ARMAZEM">
       <ObjectId>86608</ObjectId>
       <CreatedTimestamp>2021-02-27.21:35:01</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-24.23:24:23</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-03-28.14:42:27</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="94" parent="20" name="CATEGORIA">
       <ObjectId>86602</ObjectId>
       <CreatedTimestamp>2021-02-27.21:29:35</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-24.22:36:17</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-03-28.14:42:32</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="95" parent="20" name="CLIENTES">
@@ -364,7 +364,7 @@
     <table id="104" parent="20" name="HORARIO">
       <ObjectId>87843</ObjectId>
       <CreatedTimestamp>2021-03-08.20:38:17</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-24.22:29:36</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-03-26.19:50:42</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="105" parent="20" name="LINHASDEVENDAS">
@@ -49545,27 +49545,33 @@
       <RefKeyName>CODIGOPOSTAL_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7135" parent="94" name="ID_CATEGORIA">
+    <check id="7135" parent="93" name="CHECK_ESTADOATIVIDADEARMAZEM">
+      <ModifiedTimestamp>2021-03-28.14:42:27</ModifiedTimestamp>
+      <ColNames>ESTADOATIVIDADE</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <Predicate>estadoatividade in(0,1)</Predicate>
+    </check>
+    <column id="7136" parent="94" name="ID_CATEGORIA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7136" parent="94" name="NOME_CATEGORIA">
+    <column id="7137" parent="94" name="NOME_CATEGORIA">
       <Position>2</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7137" parent="94" name="DESCRICAO_CATEGORIA">
+    <column id="7138" parent="94" name="DESCRICAO_CATEGORIA">
       <Position>3</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7138" parent="94" name="ESTADOATIVIDADE">
+    <column id="7139" parent="94" name="ESTADOATIVIDADE">
       <Position>4</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7139" parent="94" name="CATEGORIA_PK">
+    <index id="7140" parent="94" name="CATEGORIA_PK">
       <ObjectId>86603</ObjectId>
       <CreatedTimestamp>2021-02-27.21:29:35</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:29:35</ModifiedTimestamp>
@@ -49573,71 +49579,77 @@
       <ColNames>ID_CATEGORIA</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7140" parent="94" name="CATEGORIA_PK">
+    <key id="7141" parent="94" name="CATEGORIA_PK">
       <ModifiedTimestamp>2021-02-27.21:29:35</ModifiedTimestamp>
       <ColNames>ID_CATEGORIA</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>CATEGORIA_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7141" parent="95" name="ID_CLIENTE">
+    <check id="7142" parent="94" name="CHECK_ESTADOATIVIDADECATEGORIA">
+      <ModifiedTimestamp>2021-03-28.14:42:32</ModifiedTimestamp>
+      <ColNames>ESTADOATIVIDADE</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <Predicate>estadoatividade in(0,1)</Predicate>
+    </check>
+    <column id="7143" parent="95" name="ID_CLIENTE">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7142" parent="95" name="NOME_CLIENTE">
+    <column id="7144" parent="95" name="NOME_CLIENTE">
       <Position>2</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7143" parent="95" name="DATA_NASCIMENTO">
+    <column id="7145" parent="95" name="DATA_NASCIMENTO">
       <Position>3</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7144" parent="95" name="EMAIL">
+    <column id="7146" parent="95" name="EMAIL">
       <Position>4</Position>
       <DataType>VARCHAR2(40 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7145" parent="95" name="SENHA">
+    <column id="7147" parent="95" name="SENHA">
       <Position>5</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7146" parent="95" name="NIF">
+    <column id="7148" parent="95" name="NIF">
       <Position>6</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7147" parent="95" name="CAIXAPOSTAL">
+    <column id="7149" parent="95" name="CAIXAPOSTAL">
       <Position>7</Position>
       <DataType>VARCHAR2(10 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7148" parent="95" name="RUA">
+    <column id="7150" parent="95" name="RUA">
       <Position>8</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7149" parent="95" name="PORTA">
+    <column id="7151" parent="95" name="PORTA">
       <Position>9</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7150" parent="95" name="LOTE">
+    <column id="7152" parent="95" name="LOTE">
       <Position>10</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7151" parent="95" name="TELEFONE">
+    <column id="7153" parent="95" name="TELEFONE">
       <Position>11</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7152" parent="95" name="COLUMN1">
+    <column id="7154" parent="95" name="COLUMN1">
       <Position>12</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <index id="7153" parent="95" name="CLIENTES_PK">
+    <index id="7155" parent="95" name="CLIENTES_PK">
       <ObjectId>86583</ObjectId>
       <CreatedTimestamp>2021-02-27.21:12:01</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:12:01</ModifiedTimestamp>
@@ -49645,31 +49657,31 @@
       <ColNames>ID_CLIENTE</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7154" parent="95" name="CLIENTES_PK">
+    <key id="7156" parent="95" name="CLIENTES_PK">
       <ModifiedTimestamp>2021-02-27.21:12:01</ModifiedTimestamp>
       <ColNames>ID_CLIENTE</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>CLIENTES_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7155" parent="95" name="FK_CLIENTES_CAIXAPOSTAL">
+    <foreign-key id="7157" parent="95" name="FK_CLIENTES_CAIXAPOSTAL">
       <ModifiedTimestamp>2021-02-27.23:43:29</ModifiedTimestamp>
       <ColNames>CAIXAPOSTAL</ColNames>
       <RefTableName>CODIGOPOSTAL</RefTableName>
       <RefKeyName>CODIGOPOSTAL_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7156" parent="96" name="CAIXAPOSTAL">
+    <column id="7158" parent="96" name="CAIXAPOSTAL">
       <Position>1</Position>
       <DataType>VARCHAR2(10 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7157" parent="96" name="LOCALIDADE">
+    <column id="7159" parent="96" name="LOCALIDADE">
       <Position>2</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7158" parent="96" name="CODIGOPOSTAL_PK">
+    <index id="7160" parent="96" name="CODIGOPOSTAL_PK">
       <ObjectId>86581</ObjectId>
       <CreatedTimestamp>2021-02-27.21:06:39</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:06:39</ModifiedTimestamp>
@@ -49677,28 +49689,28 @@
       <ColNames>CAIXAPOSTAL</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7159" parent="96" name="CODIGOPOSTAL_PK">
+    <key id="7161" parent="96" name="CODIGOPOSTAL_PK">
       <ModifiedTimestamp>2021-02-27.21:06:39</ModifiedTimestamp>
       <ColNames>CAIXAPOSTAL</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>CODIGOPOSTAL_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7160" parent="97" name="ID_DEPARTAMENTO">
+    <column id="7162" parent="97" name="ID_DEPARTAMENTO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7161" parent="97" name="NOME_DEPARTAMENTO">
+    <column id="7163" parent="97" name="NOME_DEPARTAMENTO">
       <Position>2</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7162" parent="97" name="ESTADOATIVIDADE">
+    <column id="7164" parent="97" name="ESTADOATIVIDADE">
       <Position>3</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
     </column>
-    <index id="7163" parent="97" name="DEPARTAMENTO_PK">
+    <index id="7165" parent="97" name="DEPARTAMENTO_PK">
       <ObjectId>86636</ObjectId>
       <CreatedTimestamp>2021-02-27.22:07:02</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.22:07:02</ModifiedTimestamp>
@@ -49706,44 +49718,44 @@
       <ColNames>ID_DEPARTAMENTO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7164" parent="97" name="DEPARTAMENTO_PK">
+    <key id="7166" parent="97" name="DEPARTAMENTO_PK">
       <ModifiedTimestamp>2021-02-27.22:07:02</ModifiedTimestamp>
       <ColNames>ID_DEPARTAMENTO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>DEPARTAMENTO_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7165" parent="98" name="ID_ENCOMENDA">
+    <column id="7167" parent="98" name="ID_ENCOMENDA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7166" parent="98" name="ID_GESTOR">
+    <column id="7168" parent="98" name="ID_GESTOR">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7167" parent="98" name="ID_FORNECEDOR">
+    <column id="7169" parent="98" name="ID_FORNECEDOR">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7168" parent="98" name="ID_PAGAMENTO">
+    <column id="7170" parent="98" name="ID_PAGAMENTO">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7169" parent="98" name="DATAENCOMENDA">
+    <column id="7171" parent="98" name="DATAENCOMENDA">
       <Position>5</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7170" parent="98" name="DATAPREVISTAENTREGA">
+    <column id="7172" parent="98" name="DATAPREVISTAENTREGA">
       <Position>6</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7171" parent="98" name="ENCOMENDAS_AO_FORNECEDOR_PK">
+    <index id="7173" parent="98" name="ENCOMENDAS_AO_FORNECEDOR_PK">
       <ObjectId>86618</ObjectId>
       <CreatedTimestamp>2021-02-27.21:41:54</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:41:54</ModifiedTimestamp>
@@ -49751,60 +49763,60 @@
       <ColNames>ID_ENCOMENDA</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7172" parent="98" name="ENCOMENDAS_AO_FORNECEDOR_PK">
+    <key id="7174" parent="98" name="ENCOMENDAS_AO_FORNECEDOR_PK">
       <ModifiedTimestamp>2021-02-27.21:41:54</ModifiedTimestamp>
       <ColNames>ID_ENCOMENDA</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>ENCOMENDAS_AO_FORNECEDOR_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7173" parent="98" name="FKENCOMENDAS_AO_FORNECEDOR_ID_GESTOR">
+    <foreign-key id="7175" parent="98" name="FKENCOMENDAS_AO_FORNECEDOR_ID_GESTOR">
       <ModifiedTimestamp>2021-02-27.23:47:23</ModifiedTimestamp>
       <ColNames>ID_GESTOR</ColNames>
       <RefTableName>GESTORES</RefTableName>
       <RefKeyName>GESTORES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7174" parent="98" name="FK_ENCOMENDAS_AO_FORNECEDOR_ID_FORNECEDOR">
+    <foreign-key id="7176" parent="98" name="FK_ENCOMENDAS_AO_FORNECEDOR_ID_FORNECEDOR">
       <ModifiedTimestamp>2021-02-27.23:48:36</ModifiedTimestamp>
       <ColNames>ID_FORNECEDOR</ColNames>
       <RefTableName>FORNECEDOR</RefTableName>
       <RefKeyName>FORNECEDOR_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7175" parent="98" name="FK_ENCOMENDAS_AO_FORNECEDOR_ID_PAGAMENTO">
+    <foreign-key id="7177" parent="98" name="FK_ENCOMENDAS_AO_FORNECEDOR_ID_PAGAMENTO">
       <ModifiedTimestamp>2021-02-27.23:49:52</ModifiedTimestamp>
       <ColNames>ID_PAGAMENTO</ColNames>
       <RefTableName>PAGAMENTO</RefTableName>
       <RefKeyName>PAGAMENTO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7176" parent="99" name="ID_VENDA">
+    <column id="7178" parent="99" name="ID_VENDA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7177" parent="99" name="ID_FUNCIONARIO">
+    <column id="7179" parent="99" name="ID_FUNCIONARIO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7178" parent="99" name="ESTADODAENTREGA">
+    <column id="7180" parent="99" name="ESTADODAENTREGA">
       <Position>3</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7179" parent="99" name="DATAENTREGA">
+    <column id="7181" parent="99" name="DATAENTREGA">
       <Position>4</Position>
       <DataType>DATE|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7180" parent="99" name="ESTADODERESPONSABILIDADE">
+    <column id="7182" parent="99" name="ESTADODERESPONSABILIDADE">
       <Position>5</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7181" parent="99" name="ESTADODAENCOMENDA_PK">
+    <index id="7183" parent="99" name="ESTADODAENCOMENDA_PK">
       <ObjectId>87674</ObjectId>
       <CreatedTimestamp>2021-03-06.14:08:31</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-06.14:08:31</ModifiedTimestamp>
@@ -49813,7 +49825,7 @@
 ID_FUNCIONARIO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7182" parent="99" name="ESTADODAENCOMENDA_PK">
+    <key id="7184" parent="99" name="ESTADODAENCOMENDA_PK">
       <ModifiedTimestamp>2021-03-06.14:08:31</ModifiedTimestamp>
       <ColNames>ID_VENDA
 ID_FUNCIONARIO</ColNames>
@@ -49821,111 +49833,111 @@ ID_FUNCIONARIO</ColNames>
       <UnderlyingIndexName>ESTADODAENCOMENDA_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7183" parent="99" name="FK_ESTADODAENCOMENDA_ID_VENDA">
+    <foreign-key id="7185" parent="99" name="FK_ESTADODAENCOMENDA_ID_VENDA">
       <ModifiedTimestamp>2021-03-06.14:09:40</ModifiedTimestamp>
       <ColNames>ID_VENDA</ColNames>
       <RefTableName>VENDAS</RefTableName>
       <RefKeyName>VENDAS_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7184" parent="99" name="FK_ESTADODAENCOMENDA_ID_FUNCIONARIO">
+    <foreign-key id="7186" parent="99" name="FK_ESTADODAENCOMENDA_ID_FUNCIONARIO">
       <ModifiedTimestamp>2021-03-06.14:11:03</ModifiedTimestamp>
       <ColNames>ID_FUNCIONARIO</ColNames>
       <RefTableName>FUNCIONARIOS</RefTableName>
       <RefKeyName>FORNECEDORES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <check id="7185" parent="99" name="VERIFICAÇÃO_BOOLEANA">
+    <check id="7187" parent="99" name="VERIFICAÇÃO_BOOLEANA">
       <ModifiedTimestamp>2021-03-08.23:47:44</ModifiedTimestamp>
       <ColNames>ESTADODERESPONSABILIDADE</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <Predicate>estadoderesponsabilidade=0 or  estadoderesponsabilidade=1</Predicate>
     </check>
-    <column id="7186" parent="100" name="ID_FERIAS">
+    <column id="7188" parent="100" name="ID_FERIAS">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7187" parent="100" name="ID_FUNCIONARIO">
+    <column id="7189" parent="100" name="ID_FUNCIONARIO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7188" parent="100" name="DATAINICIOFERIAS">
+    <column id="7190" parent="100" name="DATAINICIOFERIAS">
       <Position>3</Position>
       <DataType>DATE|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7189" parent="100" name="COLUMN2">
+    <column id="7191" parent="100" name="COLUMN2">
       <Position>4</Position>
       <DataType>DATE|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <foreign-key id="7190" parent="100" name="FK_FUNCIONARIOS_ID_FUNCIONARIO">
+    <foreign-key id="7192" parent="100" name="FK_FUNCIONARIOS_ID_FUNCIONARIO">
       <ModifiedTimestamp>2021-03-08.20:44:46</ModifiedTimestamp>
       <ColNames>ID_FUNCIONARIO</ColNames>
       <RefTableName>FUNCIONARIOS</RefTableName>
       <RefKeyName>FORNECEDORES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7191" parent="100" name="FK_GESTORES_ID_GESTOR">
+    <foreign-key id="7193" parent="100" name="FK_GESTORES_ID_GESTOR">
       <ModifiedTimestamp>2021-03-08.20:47:23</ModifiedTimestamp>
       <ColNames>ID_FUNCIONARIO</ColNames>
       <RefTableName>GESTORES</RefTableName>
       <RefKeyName>GESTORES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7192" parent="101" name="ID_FORNECEDOR">
+    <column id="7194" parent="101" name="ID_FORNECEDOR">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7193" parent="101" name="CAIXAPOSTAL">
+    <column id="7195" parent="101" name="CAIXAPOSTAL">
       <Position>2</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7194" parent="101" name="NOME_FORNECEDOR">
+    <column id="7196" parent="101" name="NOME_FORNECEDOR">
       <Position>3</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7195" parent="101" name="EMAIL_FORNECEDOR">
+    <column id="7197" parent="101" name="EMAIL_FORNECEDOR">
       <Position>4</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7196" parent="101" name="TELEFONE">
+    <column id="7198" parent="101" name="TELEFONE">
       <Position>5</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7197" parent="101" name="RUA">
+    <column id="7199" parent="101" name="RUA">
       <Position>6</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7198" parent="101" name="PORTA">
+    <column id="7200" parent="101" name="PORTA">
       <Position>7</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7199" parent="101" name="LOTE">
+    <column id="7201" parent="101" name="LOTE">
       <Position>8</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7200" parent="101" name="NIF">
+    <column id="7202" parent="101" name="NIF">
       <Position>9</Position>
       <DataType>VARCHAR2(13 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7201" parent="101" name="ESTADOATIVIDADE">
+    <column id="7203" parent="101" name="ESTADOATIVIDADE">
       <Position>10</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7202" parent="101" name="FORNECEDOR_PK">
+    <index id="7204" parent="101" name="FORNECEDOR_PK">
       <ObjectId>86624</ObjectId>
       <CreatedTimestamp>2021-02-27.21:55:00</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:55:00</ModifiedTimestamp>
@@ -49933,71 +49945,71 @@ ID_FUNCIONARIO</ColNames>
       <ColNames>ID_FORNECEDOR</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7203" parent="101" name="FORNECEDOR_PK">
+    <key id="7205" parent="101" name="FORNECEDOR_PK">
       <ModifiedTimestamp>2021-02-27.21:55:00</ModifiedTimestamp>
       <ColNames>ID_FORNECEDOR</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>FORNECEDOR_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7204" parent="101" name="FK_FORNECEDOR_CAIXAPOSTAL">
+    <foreign-key id="7206" parent="101" name="FK_FORNECEDOR_CAIXAPOSTAL">
       <ModifiedTimestamp>2021-02-27.23:51:36</ModifiedTimestamp>
       <ColNames>CAIXAPOSTAL</ColNames>
       <RefTableName>CODIGOPOSTAL</RefTableName>
       <RefKeyName>CODIGOPOSTAL_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7205" parent="102" name="ID_FUNCIONARIO">
+    <column id="7207" parent="102" name="ID_FUNCIONARIO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7206" parent="102" name="ID_DEPARTAMENTO">
+    <column id="7208" parent="102" name="ID_DEPARTAMENTO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7207" parent="102" name="CAIXAPOSTAL">
+    <column id="7209" parent="102" name="CAIXAPOSTAL">
       <Position>3</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7208" parent="102" name="NOME">
+    <column id="7210" parent="102" name="NOME">
       <Position>4</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7209" parent="102" name="NIF">
+    <column id="7211" parent="102" name="NIF">
       <Position>5</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7210" parent="102" name="RUA">
+    <column id="7212" parent="102" name="RUA">
       <Position>6</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7211" parent="102" name="PORTA">
+    <column id="7213" parent="102" name="PORTA">
       <Position>7</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7212" parent="102" name="TELEFONE">
+    <column id="7214" parent="102" name="TELEFONE">
       <Position>8</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7213" parent="102" name="ID_HORARIO">
+    <column id="7215" parent="102" name="ID_HORARIO">
       <Position>9</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7214" parent="102" name="ESTADOATIVIDADE">
+    <column id="7216" parent="102" name="ESTADOATIVIDADE">
       <Position>10</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7215" parent="102" name="FORNECEDORES_PK">
+    <index id="7217" parent="102" name="FORNECEDORES_PK">
       <ObjectId>86630</ObjectId>
       <CreatedTimestamp>2021-02-27.22:01:23</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.22:01:23</ModifiedTimestamp>
@@ -50005,90 +50017,90 @@ ID_FUNCIONARIO</ColNames>
       <ColNames>ID_FUNCIONARIO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7216" parent="102" name="FORNECEDORES_PK">
+    <key id="7218" parent="102" name="FORNECEDORES_PK">
       <ModifiedTimestamp>2021-02-27.22:01:23</ModifiedTimestamp>
       <ColNames>ID_FUNCIONARIO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>FORNECEDORES_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7217" parent="102" name="FK_FUNCIONARIOS_ID_DEPARTAMENTO">
+    <foreign-key id="7219" parent="102" name="FK_FUNCIONARIOS_ID_DEPARTAMENTO">
       <ModifiedTimestamp>2021-02-27.23:52:18</ModifiedTimestamp>
       <ColNames>ID_DEPARTAMENTO</ColNames>
       <RefTableName>DEPARTAMENTO</RefTableName>
       <RefKeyName>DEPARTAMENTO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7218" parent="102" name="FK_FUNCIONARIOS_CAIXAPOSTAL">
+    <foreign-key id="7220" parent="102" name="FK_FUNCIONARIOS_CAIXAPOSTAL">
       <ModifiedTimestamp>2021-02-27.23:52:38</ModifiedTimestamp>
       <ColNames>CAIXAPOSTAL</ColNames>
       <RefTableName>CODIGOPOSTAL</RefTableName>
       <RefKeyName>CODIGOPOSTAL_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7219" parent="102" name="FK_HORARIO_ID_HORARIO_FUNCIONARIO">
+    <foreign-key id="7221" parent="102" name="FK_HORARIO_ID_HORARIO_FUNCIONARIO">
       <ModifiedTimestamp>2021-03-08.20:50:56</ModifiedTimestamp>
       <ColNames>ID_HORARIO</ColNames>
       <RefTableName>HORARIO</RefTableName>
       <RefKeyName>HORARIO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7220" parent="103" name="ID_GESTOR">
+    <column id="7222" parent="103" name="ID_GESTOR">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7221" parent="103" name="ID_DEPARTAMENTO">
+    <column id="7223" parent="103" name="ID_DEPARTAMENTO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7222" parent="103" name="CAIXAPOSTAL">
+    <column id="7224" parent="103" name="CAIXAPOSTAL">
       <Position>3</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7223" parent="103" name="NOME_GESTOR">
+    <column id="7225" parent="103" name="NOME_GESTOR">
       <Position>4</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7224" parent="103" name="NIF">
+    <column id="7226" parent="103" name="NIF">
       <Position>5</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7225" parent="103" name="RUA">
+    <column id="7227" parent="103" name="RUA">
       <Position>6</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7226" parent="103" name="PORTA">
+    <column id="7228" parent="103" name="PORTA">
       <Position>7</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7227" parent="103" name="LOTE">
+    <column id="7229" parent="103" name="LOTE">
       <Position>8</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7228" parent="103" name="BI">
+    <column id="7230" parent="103" name="BI">
       <Position>9</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7229" parent="103" name="ID_HORARIO">
+    <column id="7231" parent="103" name="ID_HORARIO">
       <Position>10</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7230" parent="103" name="ESTADOATIVIDADE">
+    <column id="7232" parent="103" name="ESTADOATIVIDADE">
       <Position>11</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7231" parent="103" name="GESTORES_PK">
+    <index id="7233" parent="103" name="GESTORES_PK">
       <ObjectId>86616</ObjectId>
       <CreatedTimestamp>2021-02-27.21:37:47</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:37:47</ModifiedTimestamp>
@@ -50096,90 +50108,95 @@ ID_FUNCIONARIO</ColNames>
       <ColNames>ID_GESTOR</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7232" parent="103" name="GESTORES_PK">
+    <key id="7234" parent="103" name="GESTORES_PK">
       <ModifiedTimestamp>2021-02-27.21:37:47</ModifiedTimestamp>
       <ColNames>ID_GESTOR</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>GESTORES_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7233" parent="103" name="FK_GESTORES_ID_DEPARTAMENTO">
+    <foreign-key id="7235" parent="103" name="FK_GESTORES_ID_DEPARTAMENTO">
       <ModifiedTimestamp>2021-02-27.23:53:14</ModifiedTimestamp>
       <ColNames>ID_DEPARTAMENTO</ColNames>
       <RefTableName>DEPARTAMENTO</RefTableName>
       <RefKeyName>DEPARTAMENTO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7234" parent="103" name="FK_GESTORES_CAIXAPOSTAL">
+    <foreign-key id="7236" parent="103" name="FK_GESTORES_CAIXAPOSTAL">
       <ModifiedTimestamp>2021-02-27.23:55:17</ModifiedTimestamp>
       <ColNames>CAIXAPOSTAL</ColNames>
       <RefTableName>CODIGOPOSTAL</RefTableName>
       <RefKeyName>CODIGOPOSTAL_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7235" parent="103" name="FK_HORARIO_ID_HORARIO">
+    <foreign-key id="7237" parent="103" name="FK_HORARIO_ID_HORARIO">
       <ModifiedTimestamp>2021-03-08.20:49:27</ModifiedTimestamp>
       <ColNames>ID_HORARIO</ColNames>
       <RefTableName>HORARIO</RefTableName>
       <RefKeyName>HORARIO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7236" parent="104" name="ID_HORARIO">
+    <column id="7238" parent="104" name="ID_HORARIO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7237" parent="104" name="ID_FUNCIONARIO">
+    <column id="7239" parent="104" name="ID_FUNCIONARIO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7238" parent="104" name="SEGUNDA_FEIRA">
+    <column id="7240" parent="104" name="SEGUNDA_FEIRA">
       <Position>3</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7239" parent="104" name="TERCA_FEIRA">
+    <column id="7241" parent="104" name="TERCA_FEIRA">
       <Position>4</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7240" parent="104" name="QUARTA_FEIRA">
+    <column id="7242" parent="104" name="QUARTA_FEIRA">
       <Position>5</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7241" parent="104" name="QUINTA_FEIRA">
+    <column id="7243" parent="104" name="QUINTA_FEIRA">
       <Position>6</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7242" parent="104" name="SEXTA_FEIRA">
+    <column id="7244" parent="104" name="SEXTA_FEIRA">
       <Position>7</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7243" parent="104" name="SABADO">
+    <column id="7245" parent="104" name="SABADO">
       <Position>8</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7244" parent="104" name="DOMINGO">
+    <column id="7246" parent="104" name="DOMINGO">
       <Position>9</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7245" parent="104" name="NUMERODEFUNCIONARIOS">
+    <column id="7247" parent="104" name="NUMERODEFUNCIONARIOS">
       <Position>10</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7246" parent="104" name="ESTADOATIVIDADE">
+    <column id="7248" parent="104" name="ESTADOATIVIDADE">
       <Position>11</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7247" parent="104" name="HORARIO_PK">
+    <column id="7249" parent="104" name="NUMEROFUNCIONARIOSNECESSARIO">
+      <Position>12</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="7250" parent="104" name="HORARIO_PK">
       <ObjectId>87844</ObjectId>
       <CreatedTimestamp>2021-03-08.20:38:17</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-08.20:38:17</ModifiedTimestamp>
@@ -50187,34 +50204,34 @@ ID_FUNCIONARIO</ColNames>
       <ColNames>ID_HORARIO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7248" parent="104" name="HORARIO_PK">
+    <key id="7251" parent="104" name="HORARIO_PK">
       <ModifiedTimestamp>2021-03-08.20:38:17</ModifiedTimestamp>
       <ColNames>ID_HORARIO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>HORARIO_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7249" parent="105" name="ID_VENDA">
+    <column id="7252" parent="105" name="ID_VENDA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7250" parent="105" name="ID_PRODUTO">
+    <column id="7253" parent="105" name="ID_PRODUTO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7251" parent="105" name="QUANTIDADE">
+    <column id="7254" parent="105" name="QUANTIDADE">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7252" parent="105" name="PRECOUNITARIO">
+    <column id="7255" parent="105" name="PRECOUNITARIO">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7253" parent="105" name="LINHASDEVENDAS_PK">
+    <index id="7256" parent="105" name="LINHASDEVENDAS_PK">
       <ObjectId>86595</ObjectId>
       <CreatedTimestamp>2021-02-27.21:24:40</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:24:40</ModifiedTimestamp>
@@ -50223,7 +50240,7 @@ ID_FUNCIONARIO</ColNames>
 ID_PRODUTO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7254" parent="105" name="LINHASDEVENDAS_PK">
+    <key id="7257" parent="105" name="LINHASDEVENDAS_PK">
       <ModifiedTimestamp>2021-02-27.21:24:40</ModifiedTimestamp>
       <ColNames>ID_VENDA
 ID_PRODUTO</ColNames>
@@ -50231,46 +50248,46 @@ ID_PRODUTO</ColNames>
       <UnderlyingIndexName>LINHASDEVENDAS_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7255" parent="105" name="FK_LINHASDEVENDAS_ID_VENDA">
+    <foreign-key id="7258" parent="105" name="FK_LINHASDEVENDAS_ID_VENDA">
       <ModifiedTimestamp>2021-02-27.23:57:46</ModifiedTimestamp>
       <ColNames>ID_VENDA</ColNames>
       <RefTableName>VENDAS</RefTableName>
       <RefKeyName>VENDAS_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7256" parent="105" name="FK_LINHASDEVENDAS_ID_PRODUTO">
+    <foreign-key id="7259" parent="105" name="FK_LINHASDEVENDAS_ID_PRODUTO">
       <ModifiedTimestamp>2021-02-27.23:58:09</ModifiedTimestamp>
       <ColNames>ID_PRODUTO</ColNames>
       <RefTableName>PRODUTO</RefTableName>
       <RefKeyName>PRODUTO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7257" parent="106" name="ID_ENCOMENDA">
+    <column id="7260" parent="106" name="ID_ENCOMENDA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7258" parent="106" name="ID_PRODUTO">
+    <column id="7261" parent="106" name="ID_PRODUTO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7259" parent="106" name="QUANTIDADE">
+    <column id="7262" parent="106" name="QUANTIDADE">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7260" parent="106" name="PRECO">
+    <column id="7263" parent="106" name="PRECO">
       <Position>4</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7261" parent="106" name="DESCRICAO">
+    <column id="7264" parent="106" name="DESCRICAO">
       <Position>5</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7262" parent="106" name="LINHASENCOMENDAS_PK">
+    <index id="7265" parent="106" name="LINHASENCOMENDAS_PK">
       <ObjectId>86605</ObjectId>
       <CreatedTimestamp>2021-02-27.21:31:12</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:31:12</ModifiedTimestamp>
@@ -50279,7 +50296,7 @@ ID_PRODUTO</ColNames>
 ID_PRODUTO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7263" parent="106" name="LINHASENCOMENDAS_PK">
+    <key id="7266" parent="106" name="LINHASENCOMENDAS_PK">
       <ModifiedTimestamp>2021-02-27.21:31:12</ModifiedTimestamp>
       <ColNames>ID_ENCOMENDA
 ID_PRODUTO</ColNames>
@@ -50287,35 +50304,35 @@ ID_PRODUTO</ColNames>
       <UnderlyingIndexName>LINHASENCOMENDAS_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7264" parent="106" name="FK_LINHASENCOMENDAS_ID_ENCOMENDA">
+    <foreign-key id="7267" parent="106" name="FK_LINHASENCOMENDAS_ID_ENCOMENDA">
       <ModifiedTimestamp>2021-02-27.23:59:48</ModifiedTimestamp>
       <ColNames>ID_ENCOMENDA</ColNames>
       <RefTableName>ENCOMENDAS_AO_FORNECEDOR</RefTableName>
       <RefKeyName>ENCOMENDAS_AO_FORNECEDOR_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7265" parent="106" name="FK_LINHASENCOMENDAS_ID_PRODUTO">
+    <foreign-key id="7268" parent="106" name="FK_LINHASENCOMENDAS_ID_PRODUTO">
       <ModifiedTimestamp>2021-02-28.00:00:13</ModifiedTimestamp>
       <ColNames>ID_PRODUTO</ColNames>
       <RefTableName>PRODUTO</RefTableName>
       <RefKeyName>PRODUTO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7266" parent="107" name="ID_METODOPAGAMENTO">
+    <column id="7269" parent="107" name="ID_METODOPAGAMENTO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7267" parent="107" name="DESCRICAO">
+    <column id="7270" parent="107" name="DESCRICAO">
       <Position>2</Position>
       <DataType>VARCHAR2(40 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7268" parent="107" name="ESTADOATIVIDADE">
+    <column id="7271" parent="107" name="ESTADOATIVIDADE">
       <Position>3</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
     </column>
-    <index id="7269" parent="107" name="METODOPAGAMENTO_PK">
+    <index id="7272" parent="107" name="METODOPAGAMENTO_PK">
       <ObjectId>86592</ObjectId>
       <CreatedTimestamp>2021-02-27.21:16:24</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:16:24</ModifiedTimestamp>
@@ -50323,29 +50340,29 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_METODOPAGAMENTO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7270" parent="107" name="METODOPAGAMENTO_PK">
+    <key id="7273" parent="107" name="METODOPAGAMENTO_PK">
       <ModifiedTimestamp>2021-02-27.21:16:24</ModifiedTimestamp>
       <ColNames>ID_METODOPAGAMENTO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>METODOPAGAMENTO_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7271" parent="108" name="ID_PAGAMENTO">
+    <column id="7274" parent="108" name="ID_PAGAMENTO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7272" parent="108" name="ID_METODOPAGAMENTO">
+    <column id="7275" parent="108" name="ID_METODOPAGAMENTO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7273" parent="108" name="VALORPAGO">
+    <column id="7276" parent="108" name="VALORPAGO">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7274" parent="108" name="PAGAMENTO_PK">
+    <index id="7277" parent="108" name="PAGAMENTO_PK">
       <ObjectId>86587</ObjectId>
       <CreatedTimestamp>2021-02-27.21:15:33</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:15:33</ModifiedTimestamp>
@@ -50353,34 +50370,34 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_PAGAMENTO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7275" parent="108" name="PAGAMENTO_PK">
+    <key id="7278" parent="108" name="PAGAMENTO_PK">
       <ModifiedTimestamp>2021-02-27.21:15:33</ModifiedTimestamp>
       <ColNames>ID_PAGAMENTO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>PAGAMENTO_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7276" parent="108" name="FK_PAGAMENTO_ID_METODOPAGAMENTO">
+    <foreign-key id="7279" parent="108" name="FK_PAGAMENTO_ID_METODOPAGAMENTO">
       <ModifiedTimestamp>2021-03-03.19:47:53</ModifiedTimestamp>
       <ColNames>ID_METODOPAGAMENTO</ColNames>
       <RefTableName>METODOPAGAMENTO</RefTableName>
       <RefKeyName>METODOPAGAMENTO_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7277" parent="109" name="ID_PRATELEIRA">
+    <column id="7280" parent="109" name="ID_PRATELEIRA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7278" parent="109" name="ID_ARMAZEM">
+    <column id="7281" parent="109" name="ID_ARMAZEM">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7279" parent="109" name="CORREDOR">
+    <column id="7282" parent="109" name="CORREDOR">
       <Position>3</Position>
       <DataType>VARCHAR2(70 byte)|0s</DataType>
     </column>
-    <index id="7280" parent="109" name="PRATELEIRA_PK">
+    <index id="7283" parent="109" name="PRATELEIRA_PK">
       <ObjectId>86607</ObjectId>
       <CreatedTimestamp>2021-02-27.21:33:09</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:33:09</ModifiedTimestamp>
@@ -50388,70 +50405,70 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_PRATELEIRA</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7281" parent="109" name="PRATELEIRA_PK">
+    <key id="7284" parent="109" name="PRATELEIRA_PK">
       <ModifiedTimestamp>2021-02-27.21:33:09</ModifiedTimestamp>
       <ColNames>ID_PRATELEIRA</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>PRATELEIRA_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7282" parent="109" name="FK_PRATELEIRA_ID_ARMAZEM">
+    <foreign-key id="7285" parent="109" name="FK_PRATELEIRA_ID_ARMAZEM">
       <ModifiedTimestamp>2021-02-28.00:01:47</ModifiedTimestamp>
       <ColNames>ID_ARMAZEM</ColNames>
       <RefTableName>ARMAZEM</RefTableName>
       <RefKeyName>ARMAZEM_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7283" parent="110" name="ID_PRODUTO">
+    <column id="7286" parent="110" name="ID_PRODUTO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7284" parent="110" name="ID_CATEGORIA">
+    <column id="7287" parent="110" name="ID_CATEGORIA">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7285" parent="110" name="ID_ARMAZEM">
+    <column id="7288" parent="110" name="ID_ARMAZEM">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7286" parent="110" name="NOME_PRODUTO">
+    <column id="7289" parent="110" name="NOME_PRODUTO">
       <Position>4</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7287" parent="110" name="VALIDADE">
+    <column id="7290" parent="110" name="VALIDADE">
       <Position>5</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
     </column>
-    <column id="7288" parent="110" name="QUANTIDADE_EM_STOCK">
+    <column id="7291" parent="110" name="QUANTIDADE_EM_STOCK">
       <Position>6</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7289" parent="110" name="PRECOVENDA">
+    <column id="7292" parent="110" name="PRECOVENDA">
       <Position>7</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7290" parent="110" name="QUANTIDADE_MINIMA_STOCK">
+    <column id="7293" parent="110" name="QUANTIDADE_MINIMA_STOCK">
       <Position>8</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7291" parent="110" name="ESTADOATIVIDADE">
+    <column id="7294" parent="110" name="ESTADOATIVIDADE">
       <Position>9</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7292" parent="110" name="ID_UNIDADEMEDIDA">
+    <column id="7295" parent="110" name="ID_UNIDADEMEDIDA">
       <Position>10</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7293" parent="110" name="PRODUTO_PK">
+    <index id="7296" parent="110" name="PRODUTO_PK">
       <ObjectId>86601</ObjectId>
       <CreatedTimestamp>2021-02-27.21:28:19</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:28:19</ModifiedTimestamp>
@@ -50459,70 +50476,70 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_PRODUTO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7294" parent="110" name="PRODUTO_PK">
+    <key id="7297" parent="110" name="PRODUTO_PK">
       <ModifiedTimestamp>2021-02-27.21:28:19</ModifiedTimestamp>
       <ColNames>ID_PRODUTO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>PRODUTO_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7295" parent="110" name="FK_PRODUTO_ID_CATEGORIA">
+    <foreign-key id="7298" parent="110" name="FK_PRODUTO_ID_CATEGORIA">
       <ModifiedTimestamp>2021-02-28.00:18:53</ModifiedTimestamp>
       <ColNames>ID_CATEGORIA</ColNames>
       <RefTableName>CATEGORIA</RefTableName>
       <RefKeyName>CATEGORIA_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7296" parent="110" name="FK_PRODUTO_ID_ARMAZEM">
+    <foreign-key id="7299" parent="110" name="FK_PRODUTO_ID_ARMAZEM">
       <ModifiedTimestamp>2021-02-28.00:03:17</ModifiedTimestamp>
       <ColNames>ID_ARMAZEM</ColNames>
       <RefTableName>ARMAZEM</RefTableName>
       <RefKeyName>ARMAZEM_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7297" parent="110" name="FK_PRODUTO_ID_UNIDADEMEDIDA">
+    <foreign-key id="7300" parent="110" name="FK_PRODUTO_ID_UNIDADEMEDIDA">
       <ModifiedTimestamp>2021-03-24.22:23:19</ModifiedTimestamp>
       <ColNames>ID_UNIDADEMEDIDA</ColNames>
       <RefTableName>UNIDADES_DE_MEDIDA</RefTableName>
       <RefKeyName>UNIDADES_DE_MEDIDA_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7298" parent="111" name="ID_RECLAMACAO">
+    <column id="7301" parent="111" name="ID_RECLAMACAO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7299" parent="111" name="ID_CLIENTE">
+    <column id="7302" parent="111" name="ID_CLIENTE">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7300" parent="111" name="TITULORECLAMACAO">
+    <column id="7303" parent="111" name="TITULORECLAMACAO">
       <Position>3</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7301" parent="111" name="CONTEUDORECLAMACAO">
+    <column id="7304" parent="111" name="CONTEUDORECLAMACAO">
       <Position>4</Position>
       <DataType>VARCHAR2(1000 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7302" parent="111" name="ESTADORECLAMACAO">
+    <column id="7305" parent="111" name="ESTADORECLAMACAO">
       <Position>5</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7303" parent="111" name="ID_FUNCIONARIO">
+    <column id="7306" parent="111" name="ID_FUNCIONARIO">
       <Position>6</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7304" parent="111" name="DATARECLAMACAO">
+    <column id="7307" parent="111" name="DATARECLAMACAO">
       <Position>7</Position>
       <DataType>DATE|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7305" parent="111" name="RECLAMACOES_PK">
+    <index id="7308" parent="111" name="RECLAMACOES_PK">
       <ObjectId>87676</ObjectId>
       <CreatedTimestamp>2021-03-06.14:23:35</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-06.14:23:35</ModifiedTimestamp>
@@ -50530,58 +50547,58 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_RECLAMACAO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7306" parent="111" name="RECLAMACOES_PK">
+    <key id="7309" parent="111" name="RECLAMACOES_PK">
       <ModifiedTimestamp>2021-03-06.14:23:35</ModifiedTimestamp>
       <ColNames>ID_RECLAMACAO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>RECLAMACOES_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7307" parent="111" name="FK_RECLAMACOES_ID_CLIENTE">
+    <foreign-key id="7310" parent="111" name="FK_RECLAMACOES_ID_CLIENTE">
       <ModifiedTimestamp>2021-03-06.14:24:51</ModifiedTimestamp>
       <ColNames>ID_CLIENTE</ColNames>
       <RefTableName>CLIENTES</RefTableName>
       <RefKeyName>CLIENTES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7308" parent="111" name="FK_RECLAMACOES_ID_FUNCIONARIO">
+    <foreign-key id="7311" parent="111" name="FK_RECLAMACOES_ID_FUNCIONARIO">
       <ModifiedTimestamp>2021-03-09.01:22:50</ModifiedTimestamp>
       <ColNames>ID_FUNCIONARIO</ColNames>
       <RefTableName>FUNCIONARIOS</RefTableName>
       <RefKeyName>FORNECEDORES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7309" parent="112" name="ID_RESOLUCAO">
+    <column id="7312" parent="112" name="ID_RESOLUCAO">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7310" parent="112" name="ID_FUNCIONARIO">
+    <column id="7313" parent="112" name="ID_FUNCIONARIO">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7311" parent="112" name="ID_RECLAMACAO">
+    <column id="7314" parent="112" name="ID_RECLAMACAO">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7312" parent="112" name="RESOLUCAO">
+    <column id="7315" parent="112" name="RESOLUCAO">
       <Position>4</Position>
       <DataType>VARCHAR2(200 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7313" parent="112" name="ESTADORESOLUCAO">
+    <column id="7316" parent="112" name="ESTADORESOLUCAO">
       <Position>5</Position>
       <DataType>NUMBER(1 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7314" parent="112" name="DATARESOLUCAO">
+    <column id="7317" parent="112" name="DATARESOLUCAO">
       <Position>6</Position>
       <DataType>DATE|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7315" parent="112" name="RESOLUCAO_DE_RECLAMACOES_PK">
+    <index id="7318" parent="112" name="RESOLUCAO_DE_RECLAMACOES_PK">
       <ObjectId>90913</ObjectId>
       <CreatedTimestamp>2021-03-24.22:05:44</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-24.22:05:44</ModifiedTimestamp>
@@ -50589,42 +50606,42 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_RESOLUCAO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7316" parent="112" name="RESOLUCAO_DE_RECLAMACOES_PK">
+    <key id="7319" parent="112" name="RESOLUCAO_DE_RECLAMACOES_PK">
       <ModifiedTimestamp>2021-03-24.22:05:44</ModifiedTimestamp>
       <ColNames>ID_RESOLUCAO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>RESOLUCAO_DE_RECLAMACOES_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7317" parent="112" name="FK_RESOLUCAO_DE_RECLAMACOES_ID_FUNCIONARIO">
+    <foreign-key id="7320" parent="112" name="FK_RESOLUCAO_DE_RECLAMACOES_ID_FUNCIONARIO">
       <ModifiedTimestamp>2021-03-24.22:17:58</ModifiedTimestamp>
       <ColNames>ID_FUNCIONARIO</ColNames>
       <RefTableName>FUNCIONARIOS</RefTableName>
       <RefKeyName>FORNECEDORES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7318" parent="112" name="FK_RESOLUCAO_DE_RECLAMACOES_ID_RECLAMACAO">
+    <foreign-key id="7321" parent="112" name="FK_RESOLUCAO_DE_RECLAMACOES_ID_RECLAMACAO">
       <ModifiedTimestamp>2021-03-24.22:18:24</ModifiedTimestamp>
       <ColNames>ID_RECLAMACAO</ColNames>
       <RefTableName>RECLAMACOES</RefTableName>
       <RefKeyName>RECLAMACOES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7319" parent="113" name="ID_UNIDADEMEDIDA">
+    <column id="7322" parent="113" name="ID_UNIDADEMEDIDA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7320" parent="113" name="COLUMN2">
+    <column id="7323" parent="113" name="COLUMN2">
       <Position>2</Position>
       <DataType>VARCHAR2(40 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7321" parent="113" name="DESCRICAO_UNIDADEMEDIDA">
+    <column id="7324" parent="113" name="DESCRICAO_UNIDADEMEDIDA">
       <Position>3</Position>
       <DataType>VARCHAR2(100 byte)|0s</DataType>
     </column>
-    <index id="7322" parent="113" name="UNIDADES_DE_MEDIDA_PK">
+    <index id="7325" parent="113" name="UNIDADES_DE_MEDIDA_PK">
       <ObjectId>90915</ObjectId>
       <CreatedTimestamp>2021-03-24.22:20:33</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-24.22:20:33</ModifiedTimestamp>
@@ -50632,39 +50649,39 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_UNIDADEMEDIDA</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7323" parent="113" name="UNIDADES_DE_MEDIDA_PK">
+    <key id="7326" parent="113" name="UNIDADES_DE_MEDIDA_PK">
       <ModifiedTimestamp>2021-03-24.22:20:33</ModifiedTimestamp>
       <ColNames>ID_UNIDADEMEDIDA</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>UNIDADES_DE_MEDIDA_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7324" parent="114" name="ID_VENDA">
+    <column id="7327" parent="114" name="ID_VENDA">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7325" parent="114" name="ID_CLIENTE">
+    <column id="7328" parent="114" name="ID_CLIENTE">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7326" parent="114" name="ID_PAGAMENTO">
+    <column id="7329" parent="114" name="ID_PAGAMENTO">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7327" parent="114" name="VALORTOTAL">
+    <column id="7330" parent="114" name="VALORTOTAL">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7328" parent="114" name="DATAVENDA">
+    <column id="7331" parent="114" name="DATAVENDA">
       <Position>5</Position>
       <DataType>VARCHAR2(15 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7329" parent="114" name="VENDAS_PK">
+    <index id="7332" parent="114" name="VENDAS_PK">
       <ObjectId>86585</ObjectId>
       <CreatedTimestamp>2021-02-27.21:14:03</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-27.21:14:03</ModifiedTimestamp>
@@ -50672,21 +50689,21 @@ ID_PRODUTO</ColNames>
       <ColNames>ID_VENDA</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7330" parent="114" name="VENDAS_PK">
+    <key id="7333" parent="114" name="VENDAS_PK">
       <ModifiedTimestamp>2021-02-27.21:14:03</ModifiedTimestamp>
       <ColNames>ID_VENDA</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>VENDAS_PK</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7331" parent="114" name="FK_VENDAS_ID_CLIENTE">
+    <foreign-key id="7334" parent="114" name="FK_VENDAS_ID_CLIENTE">
       <ModifiedTimestamp>2021-02-28.00:04:20</ModifiedTimestamp>
       <ColNames>ID_CLIENTE</ColNames>
       <RefTableName>CLIENTES</RefTableName>
       <RefKeyName>CLIENTES_PK</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7332" parent="114" name="FK_VENDAS_ID_PAGAMENTO">
+    <foreign-key id="7335" parent="114" name="FK_VENDAS_ID_PAGAMENTO">
       <ModifiedTimestamp>2021-02-28.00:04:56</ModifiedTimestamp>
       <ColNames>ID_PAGAMENTO</ColNames>
       <RefTableName>PAGAMENTO</RefTableName>

@@ -88,7 +88,7 @@ menu: onde temos as opções a aceder;
 
 															MAPEAMENTO
 Logistica(produtos,armazens,prateleira,unidade de medida,fornecedores)
-Finanças(Vendas,Linhas Vendas,faturamento,pagamentos,metodo_pagamento,encomendas,linhas encomendas,estado encomenda)
+Finanças(Vendas,Linhas Vendas,pagamentos,metodo_pagamento,encomendas,linhas encomendas,estado encomenda)
 Recursos humanos(Login,clientes,funcionarios,gestores,codigo postal,ferias,horarios,reclamações,resolução_reclamações,departamento)
 												
 GESTORES
