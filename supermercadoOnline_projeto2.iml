@@ -7,15 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/School/2º Ano/Semestre I/BD/Repositorio/sqldeveloper/jdbc/lib/ojdbc8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -23,6 +14,29 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://C:/app/openjfx-15.0.1_windows-x64_bin-sdk/javafx-sdk-15.0.1/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://C:/app/openjfx-15.0.1_windows-x64_bin-sdk/javafx-sdk-15.0.1/lib" />
+        </SOURCES>
+        <jarDirectory url="file://C:/app/openjfx-15.0.1_windows-x64_bin-sdk/javafx-sdk-15.0.1/lib" recursive="false" />
+        <jarDirectory url="file://C:/app/openjfx-15.0.1_windows-x64_bin-sdk/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Desktop/School/2ºAno/SemestreI/BD/Repositorio/sqldeveloper/jdbc/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Desktop/School/2ºAno/SemestreI/BD/Repositorio/sqldeveloper/jdbc/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

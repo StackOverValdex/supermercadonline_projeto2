@@ -1,13 +1,13 @@
-package com.company;
+package sample;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class oracleDB_connection
 {
-    private static Connection conn = null;
+    public static Connection conn = null;
 
-    public static Connection createConnection()
+    private static Connection createConnection()
     {
 
         if (conn != null)
@@ -39,18 +39,4 @@ public class oracleDB_connection
             return conn;
         }
     }
-
-   /* public  static void createConnection()
-    {
-        try
-        {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            System.out.println("criaçao feita com sucesso!");
-        } catch (ClassNotFoundException e)
-        {
-            System.out.println("Oops! Can't find class oracle.jdbc.driver.OracleDriver");
-            System.exit(-1);
-        }
-
-    }*/
 }

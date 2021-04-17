@@ -6,11 +6,15 @@ public class Main
 {
     public static void main(String[] args)
     {
+
+
+
         oracleDB_connection.createConnection();
 
+       // Cloneable
         //  create
         /*
-        Codigo_Postal cp = new Codigo_Postal();
+        var cp = new Codigo_Postal();
         cp.setCaixapostal("4900-300");
         cp.setLocalidade("Viana do Castelo");
         cp.create();
@@ -32,7 +36,7 @@ public class Main
         */
 
         //delete
-        Codigo_Postal cppp=new Codigo_Postal();
+        var cppp=new Codigo_Postal();
        // cppp.delete();
     }
 }

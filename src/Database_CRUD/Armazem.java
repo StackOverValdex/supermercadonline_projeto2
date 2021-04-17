@@ -21,75 +21,93 @@ public class Armazem
     private String telofoneResponsavel;
     private short estadoAtividade;
 
-    public int getId_armazem() {
+    public int getId_armazem()
+    {
         return id_armazem;
     }
 
-    public void setId_armazem(int id_armazem) {
+    public void setId_armazem(int id_armazem)
+    {
         this.id_armazem = id_armazem;
     }
 
-    public int getId_gestor() {
+    public int getId_gestor()
+    {
         return id_gestor;
     }
 
-    public void setId_gestor(int id_gestor) {
+    public void setId_gestor(int id_gestor)
+    {
         this.id_gestor = id_gestor;
     }
 
-    public String getCaixa_postal() {
+    public String getCaixa_postal()
+    {
         return caixa_postal;
     }
 
-    public void setCaixa_postal(String caixa_postal) {
+    public void setCaixa_postal(String caixa_postal)
+    {
         this.caixa_postal = caixa_postal;
     }
 
-    public String getNome() {
+    public String getNome()
+    {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
 
-    public short getRua() {
+    public short getRua()
+    {
         return rua;
     }
 
-    public void setRua(short rua) {
+    public void setRua(short rua)
+    {
         this.rua = rua;
     }
 
-    public short getPorta() {
+    public short getPorta()
+    {
         return porta;
     }
 
-    public void setPorta(short porta) {
+    public void setPorta(short porta)
+    {
         this.porta = porta;
     }
 
-    public String getNomeResponsavel() {
+    public String getNomeResponsavel()
+    {
         return nomeResponsavel;
     }
 
-    public void setNomeResponsavel(String nomeResponsavel) {
+    public void setNomeResponsavel(String nomeResponsavel)
+    {
         this.nomeResponsavel = nomeResponsavel;
     }
 
-    public String getTelofoneResponsavel() {
+    public String getTelofoneResponsavel()
+    {
         return telofoneResponsavel;
     }
 
-    public void setTelofoneResponsavel(String telofoneResponsavel) {
+    public void setTelofoneResponsavel(String telofoneResponsavel)
+    {
         this.telofoneResponsavel = telofoneResponsavel;
     }
 
-    public short getEstadoAtividade() {
+    public short getEstadoAtividade()
+    {
         return estadoAtividade;
     }
 
-    public void setEstadoAtividade(short estadoAtividade) {
+    public void setEstadoAtividade(short estadoAtividade)
+    {
         this.estadoAtividade = estadoAtividade;
     }
 
@@ -125,7 +143,7 @@ public class Armazem
 
     public static List<Armazem> listarArmazem()
     {
-        Connection conn =oracleDB_connection.createConnection() ;
+        Connection conn = oracleDB_connection.createConnection();
 
         String sqlCommand = "SELECT ID_ARMAZEM, ID_GESTOR, CAIXAPOSTAL, NOME_ARMAZEM, RUA, PORTA, NOME_RESPONSAVELARMAZEM, TELEFONE_RESPONSAVEL, ESTADOATIVIDADE  FROM ARMAZEM";
 
@@ -140,7 +158,7 @@ public class Armazem
 
             while (rs.next())
             {
-                Armazem armazem  = new Armazem();
+                Armazem armazem = new Armazem();
 
                 armazem.setId_armazem(rs.getInt("ID_ARMAZEM"));
                 if (rs.getString("ID_GESTOR") != null) armazem.setId_gestor(rs.getInt("ID_GESTOR"));
@@ -148,8 +166,10 @@ public class Armazem
                 if (rs.getString("NOME_ARMAZEM") != null) armazem.setNome(rs.getString("NOME_ARMAZEM"));
                 if (rs.getString("RUA") != null) armazem.setRua(rs.getShort("RUA"));
                 if (rs.getString("PORTA") != null) armazem.setPorta(rs.getShort("PORTA"));
-                if (rs.getString("NOME_RESPONSAVELARMAZEM") != null) armazem.setNomeResponsavel(rs.getString("NOME_RESPONSAVELARMAZEM"));
-                if (rs.getString("TELEFONE_RESPONSAVEL") != null) armazem.setTelofoneResponsavel(rs.getString("TELEFONE_RESPONSAVEL"));
+                if (rs.getString("NOME_RESPONSAVELARMAZEM") != null)
+                    armazem.setNomeResponsavel(rs.getString("NOME_RESPONSAVELARMAZEM"));
+                if (rs.getString("TELEFONE_RESPONSAVEL") != null)
+                    armazem.setTelofoneResponsavel(rs.getString("TELEFONE_RESPONSAVEL"));
                 if (rs.getString("ESTADOATIVIDADE") != null) armazem.setEstadoAtividade(rs.getShort("ESTADOATIVIDADE"));
                 //
 
@@ -199,5 +219,5 @@ public class Armazem
             System.out.println("ERRO: " + ex.getMessage());
         }
     }
-    
+
 }

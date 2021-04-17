@@ -120,7 +120,7 @@ public class Departamento
     public void eliminarDepartamento(String command)
     {
         // PreparedStatement
-        Connection conn = oracleDB_connection.createConnection();
+     //   Connection conn = oracleDB_connection.createConnection();
 
         String sqlCommand = command;
 
