@@ -113,7 +113,7 @@ public class Departamento
             System.out.println("Row updated successfully!");
         } catch (SQLException ex)
         {
-            System.out.println("ERRO: " + ex.getMessage());
+            System.out.println("Erro: " + ex.getMessage());
         }
     }
 
