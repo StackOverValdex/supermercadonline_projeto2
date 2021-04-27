@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Scene xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <root>
+      <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <Line endX="1022.9998779296875" endY="-20.533302307128906" layoutX="257.0" layoutY="72.0" startX="-257.0000305175781" startY="-20.5333251953125" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="23.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/maketWorld_logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1022.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/minus.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1129.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/minimize.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1216.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/exit.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="550.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionários">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <Line endX="100.0" layoutX="362.0" layoutY="102.0" startX="-57.907135009765625" startY="2.288818359375E-5" />
+            <Line endX="100.0" layoutX="889.0" layoutY="105.0" startX="-57.907135009765625" startY="2.288818359375E-5" />
+            <TextField layoutX="408.0" layoutY="165.0" prefHeight="54.0" prefWidth="499.0" promptText="Pesquisa por nome do usuário" style="-fx-background-color: #EBEBEB; -fx-background-radius: 5;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="856.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../ficheiros_adicionais/images/lupa.png" />
+               </image>
+            </ImageView>
+            <CheckBox layoutX="1001.0" layoutY="585.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="50.0" />
+            <TableView layoutX="240.0" layoutY="265.0" prefHeight="305.0" prefWidth="782.0" style="-fx-background-radius: 15; -fx-background-color: #ffffff;">
+               <columns>
+                  <TableColumn prefWidth="79.20004272460938" text="Id do funciomário" />
+                  <TableColumn prefWidth="203.73336791992188" text="Id do departamento" />
+                  <TableColumn prefWidth="281.066650390625" text="E-mail" />
+                  <TableColumn prefWidth="216.5333251953125" text="Mais dados" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="661.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/back_arrow.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="554.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desativar todas contas">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="815.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecionar todas contas">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+            <ToggleButton layoutX="730.0" layoutY="603.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="50.0" />
+            <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="241.0" layoutY="605.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="186.0" style="-fx-background-color: #F0E8E8;" text="Adicionar funcionário">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <ImageView fitHeight="19.0" fitWidth="24.0" layoutX="400.0" layoutY="609.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../ficheiros_adicionais/images/adicionar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </root>
+</Scene>

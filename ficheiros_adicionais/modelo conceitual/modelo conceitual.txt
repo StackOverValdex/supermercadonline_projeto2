@@ -85,11 +85,12 @@ login->ecra principal->side bar menu
 dados:informações relativas ao conceito atual;
 grelhas:conjuntos de dados de dados organizados em linhas e colunas
 menu: onde temos as opções a aceder;
+selecionar ação:
 
-															MAPEAMENTO
-Logistica(produtos,armazens,prateleira,unidade de medida,fornecedores)
-Finanças(Vendas,Linhas Vendas,pagamentos,metodo_pagamento,encomendas,linhas encomendas,estado encomenda)
-Recursos humanos(Login,clientes,funcionarios,gestores,codigo postal,ferias,horarios,reclamações,resolução_reclamações,departamento)
+Login->Dashboard ->(															MAPEAMENTO
+(Logistica->(produtos||armazens||prateleira||unidade de medida||fornecedores))	||
+(Finanças->(Vendas||Linhas Vendas||pagamentos||metodo_pagamento||encomendas||linhas encomendas||estado encomenda))
+(Recursos humanos->(Login||clientes||funcionarios||gestores||codigo postal||ferias||horarios||reclamações||resolução_reclamações||departamento)))
 												
 GESTORES
 login->ecra principal->logistica|finanças|Recursos humanos

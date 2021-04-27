@@ -119,13 +119,13 @@ public class Departamento
 
     public void eliminarDepartamento(String command)
     {
-        // PreparedStatement
-     //   Connection conn = oracleDB_connection.createConnection();
+      Connection conn = oracleDB_connection.createConnection();
 
         String sqlCommand = command;
 
         try
         {
+
             PreparedStatement st = conn.prepareStatement(sqlCommand);
             st.execute();
             System.out.println("Row deleted successfully!");
